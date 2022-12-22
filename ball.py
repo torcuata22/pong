@@ -17,8 +17,12 @@ class Ball(Turtle):
         self.goto(new_x, new_y)
 
     
-    def bounce(self): 
+    def bounce_y(self): 
         self.y_move *= -1  #for ball to bounce, y needs to reverse direction
+
+    
+    def bounce_x(self): 
+        self.x_move *= -1  #for ball to bounce off the paddle, x needs to reverse direction
         
 
     
