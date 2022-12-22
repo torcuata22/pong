@@ -7,37 +7,26 @@ STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
 
 
-class Car(Turtle):
+class CarManager(Turtle):
     def __init__(self):
         super().__init__()
-        self.shape("square")
-        self.color(random.choice(COLORS))
-        self.penup()
-        self.goto(50,50)
-        self.x_move = 5
-        self.shapesize(stretch_len=2, stretch_wid=1)
-
-        # self.y_move = 10
-        # self.move_speed = 0.1
+        self.all_cars = []
         
 
-    # def move(self): #increases in x and y corrd
-    #     new_x = self.xcor() + self.x_move 
-    #     new_y = self.ycor() + self.y_move
-    #     self.goto(new_x, new_y)
+    def create_car(self):
+        random_chance = random.randint(1,6) #prob of creating car = 1 in six (regulate number of cars randomly)
+        if random_chance ==1:
+            new_car = Turtle("square")
+            new_car.shapesize(stretch_len=2, stretch_wid=1)
+            new_car.penup()
+            new_car.color(random.choice(COLORS))
+            random_y = random.randint(-250, 250)
+            new_car.goto(300, random_y)
+            self.all_cars.append(new_car)
 
-    
-    # def bounce_y(self): 
-    #     self.y_move *= -1  #for ball to bounce, y needs to reverse direction
-
-    
-    # def bounce_x(self): 
-    #     self.x_move *= -1  #for ball to bounce off the paddle, x needs to reverse direction
-    #     self.move_speed *= 0.9 #this is the delay time for sleep(), the lower it goes, the faster the ball moves
-        
+    def move_cars(self):
+        for car in self.all_cars:
+            car.backward(STARTING_MOVE_DISTANCE)
 
 
-    # def reset_position(self):
-    #     self.goto(0,0)
-    #     self.bounce_x()
-    
+
