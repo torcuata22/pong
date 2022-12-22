@@ -9,6 +9,7 @@ class Ball(Turtle):
         self.goto(0,0)
         self.x_move = 10
         self.y_move = 10
+        self.move_speed = 0.1
         
 
     def move(self): #increases in x and y corrd
@@ -23,7 +24,10 @@ class Ball(Turtle):
     
     def bounce_x(self): 
         self.x_move *= -1  #for ball to bounce off the paddle, x needs to reverse direction
+        self.move_speed *= 0.9 #this is the delay time for sleep(), the lower it goes, the faster the ball moves
         
+
+
     def reset_position(self):
         self.goto(0,0)
         self.bounce_x()

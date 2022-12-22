@@ -14,7 +14,7 @@ class Scoreboard(Turtle):
         
     #we need separate function to update scoreboard (outside init)
     def update_scoreboard(self):
-        self.clear()
+        self.clear() #before we update scoreboard so numbers don't print on top of each other
         self.goto(-150, 200)
         self.write(self.l_score, align="center", font=("Courier", 80, "normal"))
         self.goto(150, 200)

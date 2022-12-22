@@ -26,7 +26,7 @@ screen.onkeypress(l_paddle.go_down, "s")
 
 game_on = True
 while game_on:
-    time.sleep(0.1) #causes a 0.1 second delay every time ball moves, so it slows it down
+    time.sleep(ball.move_speed) #causes a delay every time ball moves, it slows it down or speeds up depending on how we change delay
     screen.update() #need to do it in a while loop or it won't move
     ball.move()
     #detect collission with wall (top or bottom):
