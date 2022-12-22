@@ -30,7 +30,9 @@ while game_on:
     time.sleep(0.1) #causes a 0.1 second delay every time ball moves, so it slows it down
     screen.update() #need to do it in a while loop or it won't move
     ball.move()
-
+    #detect collission with wall (top or bottom):
+    if ball.ycor() > 280 or ball.ycor()< -280:
+        ball.bounce()
 
 
 

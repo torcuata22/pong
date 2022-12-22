@@ -1,4 +1,5 @@
 from turtle import Turtle
+
 class Ball(Turtle):
     def __init__(self):
         super().__init__()
@@ -6,9 +7,18 @@ class Ball(Turtle):
         self.color("white")
         self.penup()
         self.goto(0,0)
+        self.x_move = 10
+        self.y_move = 10
         
 
     def move(self): #increases in x and y corrd
-        new_x = self.xcor() + 10 #I can reduce this to 1 and it will make ball slower, too
-        new_y = self.ycor() + 10
+        new_x = self.xcor() + self.x_move 
+        new_y = self.ycor() + self.y_move
         self.goto(new_x, new_y)
+
+    
+    def bounce(self): 
+        self.y_move *= -1  #for ball to bounce, y needs to reverse direction
+        
+
+    
