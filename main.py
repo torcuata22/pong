@@ -18,8 +18,8 @@ car_manager = CarManager()
 screen.listen()
 screen.onkey(player.go_forward, "Up")
 screen.onkey(player.go_back, "Down")
-# screen.onkeypress(l_paddle.go_up, "w")
-# screen.onkeypress(l_paddle.go_down, "s")
+screen.onkeypress(player.go_right, "Right")
+screen.onkeypress(player.go_left, "Left")
 
 game_on = True
 while game_on:
@@ -28,6 +28,23 @@ while game_on:
     
     car_manager.create_car()
     car_manager.move_cars()
+
+    #detect collision with a car:
+    for car in car_manager.all_cars:
+        if car.distance(player) < 20:
+            game_on = False
+            scoreboard.game_over()
+
+    #detect successful crossing, retun to start position and speed up cars
+    #successful crossing (y=280):
+    if player.is_at_finish():
+        player.go_to_start()
+        car_manager.level_up()
+        scoreboard.increase_level()
+
+
+    
+
     
 
 screen.exitonclick()
